@@ -1,3 +1,6 @@
+var pageContentEl = document.querySelector("#page-content");
+
+// other logic...
 var formEl = document.querySelector("#task-form");
 var tasksToDoEl = document.querySelector("#tasks-to-do");
 
@@ -43,4 +46,23 @@ var createTaskEl = function(taskDataObj) {
   tasksToDoEl.appendChild(listItemEl);
 };
 
+var taskButtonHandler = function(event) {
+  console.log(event.target);
+
+  if (event.target.matches(".delete-btn")) {
+    // get the element's task id
+    var taskId = event.target.getAttribute("data-task-id");
+    console.log(taskId);
+  }
+};
+var deleteTask = function(taskId) {
+  console.log(taskId);
+  if (event.target.matches(".delete-btn")) {
+    var taskId = event.target.getAttribute("data-task-id");
+    deleteTask(taskId);
+  }
+};
+
 formEl.addEventListener("submit", taskFormHandler);
+
+pageContentEl.addEventListener("click", taskButtonHandler);
